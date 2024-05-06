@@ -616,7 +616,7 @@
                                         {% if user.is_authenticated %}
                                         <a href="{% url 'add_basket' item_1.id product_amount %}">
                                         {% else %}
-                                        <a href="{% url 'register' %}">
+                                        <a href="{% url 'login' %}">
                                         {% endif %}
                                             <button class="about__product-basket-btn">
                                                 Добавить в корзину

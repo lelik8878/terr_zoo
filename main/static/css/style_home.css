@@ -1268,6 +1268,7 @@
   max-height: 240px;
 }
 .articles__slider-item-img img {
+  object-fit: contain;
   width: 100%;
   height: 100%;
   border-radius: 5px;

@@ -96,6 +96,7 @@ def get_user(request):
         print(request.POST)
         new_data = ChangeLoginForm(request.POST)
         if request.POST.get('new_login') and request.POST.get('new_password') and request.POST.get('new_password2'):
+            print('johan')
             if new_data.is_valid():
                 if new_data.cleaned_data.get('new_password') == new_data.cleaned_data.get('new_password2'):
                     current_user.username = (new_data.cleaned_data.get('new_login'))
@@ -104,7 +105,8 @@ def get_user(request):
                     error = 'Успешно изменено'
                 else:
                     error = 'Пароли не совпадают'
-        if request.POST.get('new_password') and request.POST.get('new_password2'):
+        elif request.POST.get('new_password') and request.POST.get('new_password2'):
+            print('johan2')
             if new_data.is_valid():
                 if new_data.cleaned_data.get('new_password') == new_data.cleaned_data.get('new_password2'):
                     current_user.set_password(new_data.cleaned_data.get('new_password'))
