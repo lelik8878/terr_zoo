@@ -339,6 +339,7 @@ def get_order_create(request, total_price, total_amount):
                                    total_order_price=total_price,
                                    order_compound=i)
             print(order_complete)
+            order_complete.full_clean()
             i.is_complete = True
             i.save()
             order_complete.save()

@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from .validators import check_phone_number
+
 
 class Brand(models.Model):
     brand_name = models.CharField(max_length=256, verbose_name='Название')
@@ -114,7 +116,7 @@ class Basket(models.Model):
 class Order(models.Model):
     user_name = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
     user_voiced_name = models.CharField(max_length=56, verbose_name='Имя клиента')
-    user_tel = models.CharField(max_length=10, verbose_name='Номер телефона')
+    user_tel = models.CharField(max_length=20, verbose_name='Номер телефона', validators=[check_phone_number])
     total_order_price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name='Стоимость')
     order_compound = models.ForeignKey('Basket', on_delete=models.CASCADE, verbose_name='Позиции')
     date = models.DateTimeField(auto_now_add=True)
